@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart | Styleverse</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+</head>
+<body>
+  <!-- Header -->
+  <section id="header">
+    <a href="index.html"><img src="images/logo.webp" class="logo" alt="Logo" /></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a class="active" href="cart.html"><i class="far fa-shopping-bag"></i></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <section class="section-p1">
+    <h2>Your Cart</h2>
+    <div id="cart-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price ($)</th>
+            <th>Quantity</th>
+            <th>Subtotal ($)</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items">
+          <!-- JS will insert cart items here -->
+        </tbody>
+      </table>
+      <div id="cart-summary">
+        <h3>Total: $<span id="total-amount">0</span></h3>
+        <button id="clear-cart">Clear Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (unchanged) -->
+  <!-- ... keep your footer here ... -->
+
+  <!-- JavaScript to render cart -->
+  <script>
+    const cartItemsContainer = document.getElementById('cart-items');
+    const totalAmountEl = document.getElementById('total-amount');
+    const clearCartBtn = document.getElementById('clear-cart');
+
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cartItemsContainer.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.price.toFixed(2)}</td>
+          <td>${item.quantity}</td>
+          <td>${subtotal.toFixed(2)}</td>
+        `;
+        cartItemsContainer.appendChild(row);
+      });
+
+      totalAmountEl.textContent = total.toFixed(2);
+    }
+
+    clearCartBtn.addEventListener('click', () => {
+      localStorage.removeItem('cart');
+      loadCart();
+    });
+
+    loadCart();
+  </script>
+</body>
+</html>
+
+  
