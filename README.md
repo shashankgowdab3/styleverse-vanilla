@@ -1,2 +1,2 @@
-﻿# styleverse - Mens's Summerwear E-Commerce Website
+﻿# styleverse - Mens's Summerwear E-Commerce Website (Vanilla JavaScript)
  Developed a fully responsive front-end fashion website focused on men’s summerwear, showcasing a clean, modern UI with flat-lay clothing imagery. The site includes key pages such as Home, Shop, Blog, About, and Contact. Implemented dynamic cart functionality using vanilla JavaScript, allowing users to add items to the cart from the Shop and Home pages, view selected items, calculate the total price, and clear the cart. Ensured seamless navigation and interactive user experience across all devices. This project demonstrates skills in UI/UX design, DOM manipulation, and front-end web development best practices
